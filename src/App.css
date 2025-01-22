@@ -1,9 +1,11 @@
+/* Reset margin, padding, and box-sizing for all elements */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Ensure full height and width for html and body */
 html, body {
   height: 100%;
   width: 100%;
@@ -11,6 +13,7 @@ html, body {
   padding: 0;
 }
 
+/* Background and flex layout for the body */
 body {
   font-family: Arial, sans-serif;
   background: linear-gradient(to right, #4a4a4a, #2a2a2a); /* Darker gradient gray */
@@ -25,6 +28,7 @@ body {
   transform-origin: top left;
 }
 
+/* App container layout */
 .App {
   display: flex;
   justify-content: flex-start;
@@ -34,21 +38,32 @@ body {
   width: 100%;
 }
 
+/* Plinko container to hold the canvas */
 .plinko-container {
   flex-grow: 1;
   position: relative;
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Style for buttons */
 button {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 12px 24px;
+  font-size: 18px;
   margin: 10px;
   background-color: #4CAF50;
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
 }
 
 button:disabled {
@@ -56,29 +71,101 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/* Math question styling */
 .math-question {
   margin-top: 20px;
 }
 
 .math-question input {
-  padding: 10px;
-  font-size: 16px;
+  padding: 12px 20px;
+  font-size: 18px;
+  margin-top: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
 }
 
+/* Score styling */
 .score {
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 24px;
   color: yellow;
 }
 
+/* Answer status styling */
 .answer-status {
   font-size: 18px;
   margin-top: 10px;
 }
 
+/* Make sure the canvas is responsive */
 canvas {
   display: block;
   width: 100%;
   height: 100%;
   image-rendering: optimizeSpeed; /* Improve rendering performance */
+  background-color: #333; /* Add a background color to the canvas */
+}
+
+/* For smaller screen sizes (mobile portrait and smaller tablets) */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .App {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .math-question input {
+    width: 80%;
+    font-size: 18px;
+  }
+
+  .score {
+    font-size: 22px;
+  }
+
+  .answer-status {
+    font-size: 16px;
+  }
+}
+
+/* For landscape orientation or larger devices (desktops and tablets) */
+@media (orientation: landscape) {
+  body {
+    flex-direction: row;
+  }
+
+  .App {
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 12px 24px;
+  }
+
+  .math-question input {
+    font-size: 18px;
+    width: 40%;
+  }
+
+  .score {
+    font-size: 24px;
+  }
+
+  .answer-status {
+    font-size: 18px;
+  }
 }
